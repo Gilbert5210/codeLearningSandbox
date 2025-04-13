@@ -8,16 +8,3 @@
  */
 
 export * from './handwrittenFunction';
-
-/**
- * 求和计算函数
- * @param a 
- * @param b 
- * @returns 
- */
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
-  }
-  return a + b;
-};

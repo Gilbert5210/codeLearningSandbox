@@ -1,21 +1,21 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts", // 包含所有 .d.ts 文件
-    "types" // 如果全局声明文件在根目录
+    "src/**/*",
+    "types", // 如果全局声明文件在根目录
+    "test"
   ],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],
-    "typeRoots": ["types"],
+    "typeRoots": ["types", "node_modules/@types"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
     // output .js.map sourcemap files for consumers
     "sourceMap": true,
     // match output dir to input dir. e.g. dist/index instead of dist/src/index
-    "rootDir": ".",
+    "rootDir": "./src",
     // stricter type-checking for stronger correctness. Recommended by TS
     "strict": true,
     // linter checks for common issues
@@ -35,6 +35,8 @@
     // error out if import and file system have a casing mismatch. Recommended by TS
     "forceConsistentCasingInFileNames": true,
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
-    "noEmit": true
+    "noEmit": true,
+    // 处理文件扩展名解析
+    "resolveJsonModule": true
   }
 }
