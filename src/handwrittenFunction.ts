@@ -4,7 +4,7 @@
  * @LastEditors: zhanjiangyuan zhanjiangyuan@kuaishou.com
  * @LastEditTime: 2025-03-22 17:09:36
  * @FilePath: /codeLearningSandbox/src/handwrittenFunction.ts
- * @Description: 手写通用的函数
+ * @Description: 重写js内置函数
  */
 
 /**
@@ -97,41 +97,6 @@ Array.prototype.myReduce = function<T, U>(
 // 使用demo
 // console.log([, , , 1, 2, 3, 4].myReduce((pre, cur) => pre + cur)); // 10
 
-
-/**
- * 更通用的 myCompose 函数实现
- * 使用泛型支持任意数量的函数组合
- */
-type AnyFunction<T = any> = (...args: any[]) => T;
-
-function myCompose<R>(): AnyFunction<R>;
-function myCompose<R>(fn1: (a: any) => R): (a: any) => R;
-function myCompose<A, R>(fn1: (a: A) => R, fn2: AnyFunction<A>): AnyFunction<R>;
-function myCompose<A, B, R>(fn1: (b: B) => R, fn2: (a: A) => B, fn3: AnyFunction<A>): AnyFunction<R>;
-// 可以继续添加更多重载...
-
-function myCompose(...fns: AnyFunction[]): AnyFunction {
-  if (fns.length === 0) {
-    return (arg) => arg;
-  }
-
-  if (fns.length === 1) {
-    return fns[0];
-  }
-
-  return fns.reduce(
-    (prevFn, nextFn) => (...args: any[]) => prevFn(nextFn(...args))
-  );
-}
-
-// 使用示例
-// const add1 = (x: number) => x + 1;
-// const multiply2 = (x: number) => x * 2;
-// const square = (x: number) => x * x;
-//
-// const calculate = myCompose(square, multiply2, add1);
-// console.log(calculate(5)); // 144
-
 /**
  * 优化的数组扁平化方法（迭代版本）
  * 避免大型嵌套数组时的递归栈溢出问题
@@ -213,5 +178,5 @@ Array.prototype.myMap = function<T, U, This = undefined>(
 // console.log(doubled); // [2, 4, 6, 8]
 
 export {
-  myCompose
+
 }

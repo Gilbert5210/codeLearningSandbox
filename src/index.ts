@@ -7,4 +7,5 @@
  * @Description: 工具函数 代码
  */
 
-export * from './handwrittenFunction';
+import './handwrittenFunction';
+export * from './customFunction';

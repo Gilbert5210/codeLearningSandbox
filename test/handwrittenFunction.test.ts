@@ -1,4 +1,4 @@
-import { myCompose } from '../src';
+import '../src'
 
 describe('handwrittenFunction.ts', () => {
   describe('myReduce', () => {
@@ -14,28 +14,6 @@ describe('handwrittenFunction.ts', () => {
 
     it('should throw an error on empty array without initial value', () => {
       expect([].myReduce((acc, val) => acc + val, 0)).toBe(0);
-    });
-  });
-
-  describe('myCompose', () => {
-    it('should compose multiple functions', () => {
-      const add1 = (x: number) => x + 1;
-      const multiply2 = (x: number) => x * 2;
-      const square = (x: number) => x * x;
-
-      const calculate = myCompose(square, multiply2, add1);
-      expect(calculate(5)).toBe(144);
-    });
-
-    it('should handle single function', () => {
-      const add1 = (x: number) => x + 1;
-      const calculate = myCompose(add1);
-      expect(calculate(5)).toBe(6);
-    });
-
-    it('should handle no functions', () => {
-      const calculate = myCompose();
-      expect(calculate(5)).toBe(5);
     });
   });
 
