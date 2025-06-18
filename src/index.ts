@@ -9,3 +9,6 @@
 
 import './handwrittenFunction';
 export * from './customFunction';
+
+export * from './bridgeManage';
+export * from './payManage';
